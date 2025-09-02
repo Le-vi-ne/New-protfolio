@@ -25,26 +25,40 @@ function toggleContrast() {
   }
 }
 
+// Initialize EmailJS with your public key
+emailjs.init("zMKBJKUfv5Lg1fV-_");
+
 function contact(event) {
   event.preventDefault();
+
   const loading = document.querySelector(".modal__overlay--loading");
   const success = document.querySelector(".modal__overlay--success");
-  loading.classList += " modal__overlay--visible";
+
+  loading.classList.add("modal__overlay--visible");
+
   emailjs
     .sendForm(
-      "service_80ih0if",
-      "template_d9refyl",
+      "service_5t31waa",       // Your EmailJS service ID
+      "template_d9refyl",      // Your EmailJS template ID
       event.target,
-      "user_K1PoFs8pB2YVWStDxrUls"
+      "zMKBJKUfv5Lg1fV-_"      // Your EmailJS public key
     )
     .then(() => {
       loading.classList.remove("modal__overlay--visible");
-      success.classList += " modal__overlay--visible";
+      success.classList.add("modal__overlay--visible");
+
+      // Hide success modal after 3 seconds
+      setTimeout(() => {
+        success.classList.remove("modal__overlay--visible");
+      }, 3000);
+
+      // Reset the form
+      event.target.reset();
     })
     .catch(() => {
       loading.classList.remove("modal__overlay--visible");
       alert(
-        "The email service is temporarily unavailable. Please contact me directly on email@email.com"
+        "The email service is temporarily unavailable. Please contact me directly at porterquavion@gmail.com"
       );
     });
 }
