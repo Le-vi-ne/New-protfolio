@@ -530,7 +530,7 @@ nav {
   transform: translateY(100%);
   opacity: 0;
   transition: opacity 300ms, transform 450ms ease;
-  color: white;
+  color: black;
   max-width: 550px;
 }
 
@@ -560,7 +560,7 @@ nav {
 }
 
 .project__description--link {
-  color: white;
+  color: black;
   font-size: 20px;
   margin-right: 16px;
 }
